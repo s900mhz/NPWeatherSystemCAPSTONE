@@ -44,14 +44,14 @@ namespace Capstone.Web.DAL
                     park.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
                     park.MilesOfTrail = Convert.ToDouble(reader["milesOfTrail"]);
                     park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["climate"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["yearFounded"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["annualVisitorCount"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["inspirationalQuote"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["inspirationalQuoteSource"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["parkDescription"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["entryFee"]);
-                    park.ElevationInFeet = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
+                    park.Climate = Convert.ToString(reader["climate"]);
+                    park.YearFounded = Convert.ToInt32(reader["yearFounded"]);
+                    park.AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]);
+                    park.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
+                    park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
+                    park.ParkDescription = Convert.ToString(reader["parkDescription"]);
+                    park.EntryFee = Convert.ToInt32(reader["entryFee"]);
+                    park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
 
                     parks.Add(park);
                 }

@@ -24,7 +24,7 @@ namespace Capstone.Web.Controllers
         // GET: Home/
         // GET: Home/Index
         public ActionResult Index()
-        {  
+        {
             return View("Index");
         }
 
