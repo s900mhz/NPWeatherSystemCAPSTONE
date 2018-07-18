@@ -135,10 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\DetailController.cs" />
-    <Compile Include="Controllers\FavoritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="DAL\Interfaces\IParkDAL.cs" />
     <Compile Include="DAL\Interfaces\ISurveyDAL.cs" />
     <Compile Include="DAL\Interfaces\IWeatherDAL.cs" />
@@ -160,6 +157,10 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\Survey.cshtml" />
+    <Content Include="Views\Home\Favorites.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -169,10 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Detail\" />
-    <Folder Include="Views\Favorites\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Survey\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
