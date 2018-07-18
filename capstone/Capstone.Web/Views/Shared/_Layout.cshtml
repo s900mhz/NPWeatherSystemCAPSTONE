@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css"/>
-    <link rel="stylesheet" href="~/Content/normalize.css"/>
-    <link rel="stylesheet" href="~/Content/StyleSheet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="normalize.css">
     <title>National Park Geek</title>
 
 </head>
@@ -24,42 +23,37 @@
                 </button>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <img src="~/Content/img/logo.png" style="height: 150px" class="img-responsive" alt="Responsive image">
-                <ul class="nav nav-pills">
-                    <li role="presentation"><a href="#"><b>Home</b></a></li>
-                    <li role="presentation"><a href="#" target="_blank"><b>Survey</b></a></li>
+                <img src="~/Content/img/logo.png" style="height: 150px">
+                <ul class="nav nav-pills" style="font-size: large; font-weight: bold">
+                    <li role="presentation"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#" target="_blank">Survey</a></li>
                 </ul>
 
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
-    @RenderBody()
 
-    <div class="container-fluid" style="padding-top: 190px">
+
+    <div class="container-fluid">
 
         <!-- Main component div -->
-        <div class="jumbotron">
-            <h1>MAIN HEADER</h1>
-            <p>PARAGRAPH 1</p>
+        <div class="jumbotron" style="padding-top: 190px">
 
-            <p>PARAGRAPH 2</p>
-            <p>
-                <a class="btn btn-lg btn-primary" href="#" role="button">BUTTON TEXT &raquo;</a>
-            </p>
+            @RenderBody()
+
         </div>
-
     </div> <!-- /container -->
 
 
     <footer>
-        <p>&copy; @DateTime.Now.Year - National Park Geek</p>
+        <p>&copy; @DateTime.Now.Year - National Park Geek - Team 7 (Sean Spade &amp; Jimi Tempfli</p>
     </footer>
 
 
-    <script src="~/Scripts/jquery-3.0.0.slim.min.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 
 </body>
 </html>
