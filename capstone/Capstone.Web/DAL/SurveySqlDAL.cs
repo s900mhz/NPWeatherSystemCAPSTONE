@@ -18,7 +18,7 @@ namespace Capstone.Web.DAL
 
         public List<Survey> GetSurveys()
         {
-            List<Survey> parks = new List<Survey>();
+            List<Survey> surveys = new List<Survey>();
 
             using (SqlConnection connection = new SqlConnection(_connection))
             {
@@ -32,24 +32,24 @@ namespace Capstone.Web.DAL
                 //Pull data off the table
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                //Looping through the table and populating the list with all the rows
+                
                 while (reader.Read())
                 {
-                    Park park = new Park();
+                    Survey survey= new Survey();
 
-                    forumPost.Id = Convert.ToInt32(reader["id"]);
-                    forumPost.Username = Convert.ToString(reader["username"]);
-                    forumPost.Subject = Convert.ToString(reader["subject"]);
-                    forumPost.Message = Convert.ToString(reader["message"]);
-                    forumPost.PostDate = Convert.ToDateTime(reader["post_date"]);
+                    survey.SurveyId = Convert.ToInt32(reader["surveyId"]);
+                    survey.ParkCode = Convert.ToString(reader["parkCode"]);
+                    survey.EmailAddress = Convert.ToString(reader["subject"]);
+                    survey.State = Convert.ToString(reader["state"]);
+                    survey.ActivityLevel= Convert.ToString(reader["activityLevel"]);
 
 
 
-                    parks.Add(park);
+                    surveys.Add(survey);
                 }
             }
 
-            return parks;
+            return surveys;
         }
 
         public void SaveSurvey(Survey survey)
@@ -58,13 +58,14 @@ namespace Capstone.Web.DAL
             {
                 connection.Open();
 
-                const string sqlForumCommand = "INSERT INTO survey_result (parkCode,emailAddress,state,activityLevel) " +
-                                               "VALUES (@parkCode,@emailAddress,@state,@activityLevel)";
+                const string sqlForumCommand = "INSERT INTO survey_result (parkCode,emailAddress,state,activityLevel) VALUES (@parkCode,@emailAddress,@state,@activityLevel)";
+
+
                 SqlCommand cmd = new SqlCommand();
-                cmd.Parameters.AddWithValue("@parkCode", post.Username);
-                cmd.Parameters.AddWithValue("@emailAddress", post.Subject);
-                cmd.Parameters.AddWithValue("@state", post.Message);
-                cmd.Parameters.AddWithValue("@activityLevel", post.PostDate);
+                cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
+                cmd.Parameters.AddWithValue("@emailAddress", survey.EmailAddress);
+                cmd.Parameters.AddWithValue("@state", survey.State);
+                cmd.Parameters.AddWithValue("@activityLevel", survey.ActivityLevel);
                 cmd.CommandText = sqlForumCommand;
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();

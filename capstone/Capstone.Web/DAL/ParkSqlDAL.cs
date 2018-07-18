@@ -37,18 +37,25 @@ namespace Capstone.Web.DAL
                 {
                     Park park = new Park();
 
-                    forumPost.Id = Convert.ToInt32(reader["id"]);
-                    forumPost.Username = Convert.ToString(reader["username"]);
-                    forumPost.Subject = Convert.ToString(reader["subject"]);
-                    forumPost.Message = Convert.ToString(reader["message"]);
-                    forumPost.PostDate = Convert.ToDateTime(reader["post_date"]);
-
-
+                    park.ParkCode = Convert.ToString(reader["parkCode"]);
+                    park.ParkName = Convert.ToString(reader["parkName"]);
+                    park.State = Convert.ToString(reader["state"]);
+                    park.Acreage = Convert.ToInt32(reader["acreage"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
+                    park.MilesOfTrail = Convert.ToDouble(reader["milesOfTrail"]);
+                    park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["climate"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["yearFounded"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["annualVisitorCount"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["inspirationalQuote"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["inspirationalQuoteSource"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["parkDescription"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["entryFee"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
 
                     parks.Add(park);
                 }
             }
-
             return parks;
         }
     }
