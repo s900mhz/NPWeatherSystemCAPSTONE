@@ -58,5 +58,45 @@ namespace Capstone.Web.DAL
             }
             return parks;
         }
+        public Park GetParkByCode(string parkCode)
+        {
+           Park park = new Park();
+
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                connection.Open();
+
+                const string sqlParkCommand = "SELECT [parkCode] ,[parkName],[state],[acreage],[elevationInFeet],[milesOfTrail],[numberOfCampsites],[climate],[yearFounded],[annualVisitorCount],[inspirationalQuote],[inspirationalQuoteSource],[parkDescription],[entryFee],[numberOfAnimalSpecies] FROM [NPGeek].[dbo].[park] WHERE parkCode = @parkcode";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = sqlParkCommand;
+                cmd.Parameters.AddWithValue("@parkcode", parkCode);
+                cmd.Connection = connection;
+
+                //Pull data off the table
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //Looping through the table and populating the list with all the rows
+                while (reader.Read())
+                {
+
+                    park.ParkCode = Convert.ToString(reader["parkCode"]);
+                    park.ParkName = Convert.ToString(reader["parkName"]);
+                    park.State = Convert.ToString(reader["state"]);
+                    park.Acreage = Convert.ToInt32(reader["acreage"]);
+                    park.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
+                    park.MilesOfTrail = Convert.ToDouble(reader["milesOfTrail"]);
+                    park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
+                    park.Climate = Convert.ToString(reader["climate"]);
+                    park.YearFounded = Convert.ToInt32(reader["yearFounded"]);
+                    park.AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]);
+                    park.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
+                    park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
+                    park.ParkDescription = Convert.ToString(reader["parkDescription"]);
+                    park.EntryFee = Convert.ToInt32(reader["entryFee"]);
+                    park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]); 
+                }
+            }
+            return park;
+        }
     }
 }

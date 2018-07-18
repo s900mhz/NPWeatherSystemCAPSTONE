@@ -16,7 +16,7 @@ namespace Capstone.Web.DAL
             _connection = connection;
         }
 
-        public List<Weather> GetFiveDayForecast(Park park)
+        public List<Weather> GetFiveDayForecast(string parkCode)
         {
             List<Weather> forecast = new List<Weather>();
             using (SqlConnection connection = new SqlConnection(_connection))
@@ -25,7 +25,7 @@ namespace Capstone.Web.DAL
 
                 const string sqlForumCommand = "SELECT [parkCode],[fiveDayForecastValue],[low],[high],[forecast] FROM [NPGeek].[dbo].[weather] WHERE parkCode = @parkCode";
                 SqlCommand cmd = new SqlCommand();
-                cmd.Parameters.AddWithValue("@parkCode", park.ParkCode);
+                cmd.Parameters.AddWithValue("@parkCode", parkCode);
                 cmd.CommandText = sqlForumCommand;
                 cmd.Connection = connection;
                 SqlDataReader reader = cmd.ExecuteReader();

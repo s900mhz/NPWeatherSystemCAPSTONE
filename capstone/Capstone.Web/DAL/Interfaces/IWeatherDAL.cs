@@ -9,6 +9,6 @@ namespace Capstone.Web.DAL.Interfaces
 {
     public interface IWeatherDAL
     {
-        List<Weather> GetFiveDayForecast(Park park);
+        List<Weather> GetFiveDayForecast(string parkCode);
     }
 }

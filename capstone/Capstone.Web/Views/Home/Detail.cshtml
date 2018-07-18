@@ -2,6 +2,7 @@
 @using Capstone.Web.Models
 
 @model ParkDetailViewModel
+
 @{
     string jpeg = ".jpg";
 }
@@ -63,17 +64,17 @@
 </h4>
 <h4>
     FiveDayForecastValue:
-    @Model.FiveDayForecastValue
+    @Model.Forecast[0].Forecast
 </h4>
 <h4>
     Forecast:
-    @Model.Forecast
+    @Model.Forecast[0].Forecast
 </h4>
 <h4>
     Low:
-    @Model.Low
+    @Model.Forecast[0].Low
 </h4>
 <h4>
     High:
-    @Model.High
+    @Model.Forecast[0].High
 </h4>

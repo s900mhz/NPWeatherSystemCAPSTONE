@@ -25,9 +25,34 @@ namespace Capstone.Web.Models
         public int NumberOfAnimalSpecies { get; set; }
 
         //weather properties to display
-        public int FiveDayForecastValue { get; set; }
-        public int Low { get; set; }
-        public int High { get; set; }
-        public string Forecast { get; set; }
+        //public int FiveDayForecastValue { get; set; }
+        //public int Low { get; set; }
+        //public int High { get; set; }
+        //public string Forecast { get; set; }
+
+        public List<Weather> Forecast { get; set; }
+
+        public void PopulateParkProperties(Park park)
+        {
+            ParkCode = park.ParkCode;
+            ParkName = park.ParkName;
+            State = park.State;
+            Acreage = park.Acreage;
+            ElevationInFeet = park.ElevationInFeet;
+            MilesOfTrail = park.MilesOfTrail;
+            NumberOfCampsites = park.NumberOfCampsites;
+            Climate = park.Climate;
+            YearFounded = park.YearFounded;
+            AnnualVisitorCount = park.AnnualVisitorCount;
+            InspirationalQuote = park.InspirationalQuote;
+            InspirationalQuoteSource = park.InspirationalQuoteSource;
+            ParkDescription = park.ParkDescription;
+            EntryFee = park.EntryFee;
+            NumberOfAnimalSpecies = park.NumberOfAnimalSpecies;
+        }
+        public void PopulateForecast(List<Weather> forecast)
+        {
+            Forecast = forecast;
+        }
     }
 }

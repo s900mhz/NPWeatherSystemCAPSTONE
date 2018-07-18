@@ -34,9 +34,13 @@ namespace Capstone.Web.Controllers
         // GET: Home/Detail
         public ActionResult Detail(string parkCode)
         {
-            
+            List<Weather> forecast = _weatherDAL.GetFiveDayForecast(parkCode);
+            Park park = _parkdal.GetParkByCode(parkCode);
+            ParkDetailViewModel model = new ParkDetailViewModel();
+            model.PopulateParkProperties(park);
+            model.PopulateForecast(forecast);
 
-            return View("Detail");
+            return View("Detail",model);
         }
 
 
