@@ -25,20 +25,17 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <img src="~/Content/img/logo.png" style="height: 150px">
                 <ul class="nav nav-pills" style="font-size: large; font-weight: bold">
-                    <li role="presentation"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#" target="_blank">Survey</a></li>
+                    <li role="presentation">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li role="presentation">@Html.ActionLink("Survey", "Survey", "Home")</li>
                 </ul>
 
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
-
-
     <div class="container-fluid">
-
         <!-- Main component div -->
-        <div class="jumbotron" style="padding-top: 190px">
+        <div class="jumbotron" style="padding-top: 220px">
 
             @RenderBody()
 
@@ -47,7 +44,7 @@
 
 
     <footer>
-        <p>&copy; @DateTime.Now.Year - National Park Geek - Team 7 (Sean Spade &amp; Jimi Tempfli</p>
+        <b>&copy; @DateTime.Now.Year - National Park Geek - Team 7 (Sean Spade &amp; Jimi Tempfli)</b>
     </footer>
 
 

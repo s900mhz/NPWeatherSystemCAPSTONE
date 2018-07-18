@@ -1,1 +1,79 @@
 ﻿
+@using Capstone.Web.Models
+
+@model ParkDetailViewModel
+@{
+    string jpeg = ".jpg";
+}
+
+<img src="~/Content/img/parks/@Model.ParkCode@jpeg" class="media-object" />
+
+<div class="media-body">
+    <h2 class="media-heading">@Model.ParkName, @Model.State</h2>
+    @Model.ParkDescription
+</div>
+
+<h4>
+    Acreage:
+    @Model.Acreage
+</h4>
+<h4>
+    ElevationInFeet:
+    @Model.ElevationInFeet
+</h4>
+<h4>
+    MilesOfTrail:
+    @Model.MilesOfTrail
+</h4>
+<h4>
+    NumberOfCampsites:
+    @Model.NumberOfCampsites
+</h4>
+<h4>
+    Climate:
+    @Model.Climate
+</h4>
+<h4>
+    YearFounded:
+    @Model.YearFounded
+</h4>
+<h4>
+    AnnualVisitorCount:
+    @Model.AnnualVisitorCount
+</h4>
+<h4>
+    InspirationalQuote:
+    @Model.InspirationalQuote
+</h4>
+<h4>
+    InspirationalQuoteSource:
+    @Model.InspirationalQuoteSource
+</h4>
+<h4>
+    ParkDescription:
+    @Model.ParkDescription
+</h4>
+<h4>
+    EntryFee:
+    @Model.EntryFee
+</h4>
+<h4>
+    NumberOfAnimalSpecies:
+    @Model.NumberOfAnimalSpecies
+</h4>
+<h4>
+    FiveDayForecastValue:
+    @Model.FiveDayForecastValue
+</h4>
+<h4>
+    Forecast:
+    @Model.Forecast
+</h4>
+<h4>
+    Low:
+    @Model.Low
+</h4>
+<h4>
+    High:
+    @Model.High
+</h4>

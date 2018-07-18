@@ -25,13 +25,17 @@ namespace Capstone.Web.Controllers
         // GET: Home/Index
         public ActionResult Index()
         {
-            return View("Index");
+            List<Park> parks = _parkdal.GetAllParks();
+            
+            return View("Index", parks);
         }
 
 
         // GET: Home/Detail
-        public ActionResult Detail()
+        public ActionResult Detail(string parkCode)
         {
+            
+
             return View("Detail");
         }
 
