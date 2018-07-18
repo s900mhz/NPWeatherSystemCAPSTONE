@@ -15,10 +15,12 @@ namespace Capstone.Web
 {
     public class MvcApplication : NinjectHttpApplication
     {
-        protected void Application_Start()
+        protected override void OnApplicationStarted()
         {
+            base.OnApplicationStarted();
+
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         protected override IKernel CreateKernel()
