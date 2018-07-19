@@ -96,24 +96,18 @@
     </h2>
 </div>
 <div class="row">
-    <div class="col-sm-3">
-        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[0].GetImgName()@png" />
-    </div>
-    <div class="col-sm-2">
-        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[1].GetImgName()@png" />
-    </div>
-    <div class="col-sm-2">
-        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[2].GetImgName()@png" />
-    </div>
-    <div class="col-sm-2">
-        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[3].GetImgName()@png" />
-    </div>
-    <div class="col-sm-2">
-        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[4].GetImgName()@png" />
-    </div>
+    @for (int i = 0; i < Model.Forecast.Count; i++)
+    {
+            <div class="col-sm-2">
+                <img src="~/Content/img/weather/@Model.Forecast[i].GetImgName()@png" class="image img-thumbnail">
+                <div class="overlay">
+                    <div class="text">@Model.Forecast[i].GetWeatherMessage()</div>
+                </div>
+            </div>
+    }
 </div>
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <h4>
             Today's Weather:
             @Model.Forecast[0].Forecast
@@ -137,16 +131,16 @@
     }
 </div>   
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <h4>
             High Today:
-            @Model.Forecast[0].High
+            @Model.Forecast[0].GetFormattedFahrenheitHigh()
         </h4>
     </div>
     <div class="col-sm-2">
         <h4>
             Tomorrow's High:
-            @Model.Forecast[1].High
+            @Model.Forecast[1].GetFormattedFahrenheitHigh()
         </h4>
     </div>
     @for (int i = 3; i <= Model.Forecast.Count; i++)
@@ -154,14 +148,14 @@
         <div class="col-sm-2">
             <h4>
                 High:
-                @Model.Forecast[i - 1].High
+                @Model.Forecast[i - 1].GetFormattedFahrenheitHigh()
             </h4>
         </div>
     }
 </div>
 
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <h4>
             Low Today:
             @Model.Forecast[0].GetFormattedFahrenheitLow()

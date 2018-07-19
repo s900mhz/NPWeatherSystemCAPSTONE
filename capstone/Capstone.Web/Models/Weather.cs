@@ -47,5 +47,18 @@ namespace Capstone.Web.Models
             return withoutspaces;
 
         }
+
+        public string GetWeatherMessage()
+        {
+            Dictionary<string, string> forecastMessage = new Dictionary<string, string>()
+            {
+                {"rain","Pack rain gear and wear waterproof shoes!" },{"partly cloudy","Enjoy the shade!"},
+                { "thunderstorms","Make sure to seek shelter and avoid hiking on exposed ridges!" },{"sun","Make sure to pack sunblock!"},
+                { "snow","Watch out for Yetis! Oh and pack your snow shoes"}, {"sunny","Make sure to pack sunblock!"},{"cloudy","Enjoy the shade!"}
+            };
+
+            string result = forecastMessage[Forecast];
+            return result;
+        }
     }
 }

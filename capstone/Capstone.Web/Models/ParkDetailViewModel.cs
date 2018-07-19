@@ -54,5 +54,7 @@ namespace Capstone.Web.Models
         {
             Forecast = forecast;
         }
+
+        
     }
 }
