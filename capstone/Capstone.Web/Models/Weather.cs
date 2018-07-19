@@ -12,25 +12,49 @@ namespace Capstone.Web.Models
         public double Low { get; set; }
         public double High { get; set; }
         public string Forecast { get; set; }
+        public bool isFahrenheit { get; set; } = false;
 
         public double CelsiusLow => Math.Round((Low - 32.0) * .5556);
         public double CelsiusHigh => Math.Round((High - 32.0) * .5556);
 
-        public string GetFormattedFahrenheitLow()
+        private string GetFormattedFahrenheitLow()
         {
             return String.Format("{0}°F", Low);
         }
-        public string GetFormattedFahrenheitHigh()
+        private string GetFormattedFahrenheitHigh()
         {
             return String.Format("{0}°F", High);
         }
-        public string GetFormattedCelsiusLow()
+        private string GetFormattedCelsiusLow()
         {
             return String.Format("{0}°C", CelsiusLow);
         }
-        public string GetFormattedCelsiusHigh()
+        private string GetFormattedCelsiusHigh()
         {
             return String.Format("{0}°C", CelsiusHigh);
+        }
+
+        public string GetPreferredLowTemp()
+        {
+            if (isFahrenheit)
+            {
+                return GetFormattedFahrenheitLow();
+            }
+            else
+            {
+                return GetFormattedCelsiusLow();
+            }
+        }
+        public string GetPreferredHighTemp()
+        {
+            if (isFahrenheit)
+            {
+                return GetFormattedFahrenheitHigh();
+            }
+            else
+            {
+                return GetFormattedCelsiusHigh();
+            }
         }
 
         //THis method removes all whitespace in the forecast so you are able to call the image name
