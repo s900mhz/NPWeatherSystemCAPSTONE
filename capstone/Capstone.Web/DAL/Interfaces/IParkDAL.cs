@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Capstone.Web.DAL.Interfaces
 {
@@ -11,5 +12,6 @@ namespace Capstone.Web.DAL.Interfaces
     {
         List<Park> GetAllParks();
         Park GetParkByCode(string parkCode);
+        IList<SelectListItem> GetParksForMenu();
     }
 }

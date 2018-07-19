@@ -5,6 +5,7 @@ using System.Web;
 using Capstone.Web.DAL.Interfaces;
 using System.Data.SqlClient;
 using Capstone.Web.Models;
+using System.Web.Mvc;
 
 namespace Capstone.Web.DAL
 {
@@ -97,6 +98,35 @@ namespace Capstone.Web.DAL
                 }
             }
             return park;
+        }
+
+        public IList<SelectListItem> GetParksForMenu()
+        {
+            List<SelectListItem> parks = new List<SelectListItem>();
+            
+            string sqlquery = "Select [parkCode],[parkName] from FROM [NPGeek].[dbo].[park]";
+            
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                connection.Open();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sqlquery, connection);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        SelectListItem selectListItem = new SelectListItem();
+                        selectListItem.Text = Convert.ToString(reader["parkName"]);
+                        selectListItem.Value = Convert.ToString(reader["parkCode"]);
+                        parks.Add(selectListItem);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error
+                }
+                return parks;
+            }
         }
     }
 }
