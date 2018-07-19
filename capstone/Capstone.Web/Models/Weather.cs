@@ -32,5 +32,20 @@ namespace Capstone.Web.Models
         {
             return String.Format("{0}°C", CelsiusHigh);
         }
+
+        //THis method removes all whitespace in the forecast so you are able to call the image name
+        public string GetImgName()
+        {
+            char[] s = Forecast.ToCharArray();
+            String withoutspaces = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] != ' ')
+                    withoutspaces += s[i];
+
+            }
+            return withoutspaces;
+
+        }
     }
 }

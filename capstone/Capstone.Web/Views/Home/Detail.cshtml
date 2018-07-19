@@ -5,6 +5,7 @@
 
 @{
     string jpeg = ".jpg";
+    string png = ".png";
 }
 <style>
     h4 {
@@ -93,6 +94,23 @@
     <h2>
         Five Day Forecast:
     </h2>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[0].GetImgName()@png" />
+    </div>
+    <div class="col-sm-2">
+        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[1].GetImgName()@png" />
+    </div>
+    <div class="col-sm-2">
+        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[2].GetImgName()@png" />
+    </div>
+    <div class="col-sm-2">
+        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[3].GetImgName()@png" />
+    </div>
+    <div class="col-sm-2">
+        <img class="img-thumbnail" src="~/Content/img/weather/@Model.Forecast[4].GetImgName()@png" />
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-3">
