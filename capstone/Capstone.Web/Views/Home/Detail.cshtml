@@ -6,75 +6,165 @@
 @{
     string jpeg = ".jpg";
 }
-
-<img src="~/Content/img/parks/@Model.ParkCode@jpeg" class="media-object img-fluid" style="padding:8px" />
-
-<div class="media-body">
-    <h2 class="media-heading">@Model.ParkName, @Model.State</h2>
-    @Model.ParkDescription
+<style>
+    h4 {
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<div class="media">
+    <div class="media-left media-middle">
+        <img src="~/Content/img/parks/@Model.ParkCode@jpeg" class="media-object img-fluid" style="padding:8px" />
+    </div>
+    <div class="media-body media-middle">
+        <h2 style="font-weight:bold" class="media-heading">@Model.ParkName, @Model.State</h2>
+        <h3 style="color:darkslategrey">@Model.ParkDescription</h3>
+        <br>
+        <h3>
+            "@Model.InspirationalQuote"
+        </h3>
+        <i>
+            - @Model.InspirationalQuoteSource
+        </i>
+    </div>
+    <br>
+</div>
+<div class="row" style="background-color: darkseagreen">
+    <div class="col-sm-2">
+        <h4>
+            Entry Fee:
+            $@Model.EntryFee
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Elevation:
+            @Model.ElevationInFeet feet
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Total Trail Distance Combined:
+            @Model.MilesOfTrail miles
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Total Campsites:
+            @Model.NumberOfCampsites
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Climate:
+            @Model.Climate
+        </h4>
+    </div>
+    <div class="col-sm-2">  </div>
+</div>
+<div class="row" style="background-color: darkseagreen">
+    <div class="col-sm-2">
+        <h4>
+            Year Founded:
+            @Model.YearFounded
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Annual Visitors:
+            @Model.AnnualVisitorCount
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Acreage:
+            @Model.Acreage sq. feet
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Unique Animal Species count:
+            @Model.NumberOfAnimalSpecies
+        </h4>
+    </div>    <div class="col-sm-2">  </div>    <div class="col-sm-2">  </div>
+</div>
+<br>
+<div class="row">
+    <h2>
+        Five Day Forecast:
+    </h2>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <h4>
+            Today's Weather:
+            @Model.Forecast[0].Forecast
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Tomorrow:
+            @Model.Forecast[1].Forecast
+        </h4>
+    </div>
+    @for (int i = 3; i <= Model.Forecast.Count; i++)
+    {
+    <div class="col-sm-2">
+        <h4>
+            Day @i -
+        </h4><h4>
+            @Model.Forecast[i - 1].Forecast
+        </h4>
+    </div>
+    }
+</div>   
+<div class="row">
+    <div class="col-sm-3">
+        <h4>
+            High Today:
+            @Model.Forecast[0].High
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Tomorrow's High:
+            @Model.Forecast[1].High
+        </h4>
+    </div>
+    @for (int i = 3; i <= Model.Forecast.Count; i++)
+    {
+        <div class="col-sm-2">
+            <h4>
+                High:
+                @Model.Forecast[i - 1].High
+            </h4>
+        </div>
+    }
 </div>
 
-<h4>
-    Acreage:
-    @Model.Acreage
-</h4>
-<h4>
-    ElevationInFeet:
-    @Model.ElevationInFeet
-</h4>
-<h4>
-    MilesOfTrail:
-    @Model.MilesOfTrail
-</h4>
-<h4>
-    NumberOfCampsites:
-    @Model.NumberOfCampsites
-</h4>
-<h4>
-    Climate:
-    @Model.Climate
-</h4>
-<h4>
-    YearFounded:
-    @Model.YearFounded
-</h4>
-<h4>
-    AnnualVisitorCount:
-    @Model.AnnualVisitorCount
-</h4>
-<h4>
-    InspirationalQuote:
-    @Model.InspirationalQuote
-</h4>
-<h4>
-    InspirationalQuoteSource:
-    @Model.InspirationalQuoteSource
-</h4>
-<h4>
-    ParkDescription:
-    @Model.ParkDescription
-</h4>
-<h4>
-    EntryFee:
-    @Model.EntryFee
-</h4>
-<h4>
-    NumberOfAnimalSpecies:
-    @Model.NumberOfAnimalSpecies
-</h4>
-<h4>
-    FiveDayForecastValue:
-    @Model.Forecast[0].Forecast
-</h4>
-<h4>
-    Forecast:
-    @Model.Forecast[0].Forecast
-</h4>
-<h4>
-    Low:
-    @Model.Forecast[0].Low
-</h4>
-<h4>
-    High:
-    @Model.Forecast[0].High
-</h4>
+<div class="row">
+    <div class="col-sm-3">
+        <h4>
+            Low Today:
+            @Model.Forecast[0].Low
+        </h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>
+            Tomorrow's Low:
+            @Model.Forecast[1].Low
+        </h4>
+    </div>
+    @for (int i = 3; i <= Model.Forecast.Count; i++)
+    {
+        <div class="col-sm-2">
+            <h4>
+                Low:
+                @Model.Forecast[i - 1].Low
+            </h4>
+        </div>
+    }
+</div>
+
+
+
