@@ -1,4 +1,41 @@
 ﻿
 @using Capstone.Web.Models
 
+@model Survey
 
+@{ 
+    IList<SelectListItem> parks = new List<SelectListItem>(Model.GetParksList());
+    IList<SelectListItem> states = new List<SelectListItem>(Model.GetStatesList());
+    IList<SelectListItem> activities = new List<SelectListItem>(Model.GetActivityList());
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<h2>Submit Your Survey</h2>
+
+@using (Html.BeginForm("Survey", "Home", FormMethod.Post))
+{
+    <div class="dropdown dropleft">
+        @Html.DropDownListFor(m => m.UserParkChoice, parks, "Select Your Favorite Park")
+    </div>
+    <div class="">
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.EditorFor(m => m.EmailAddress, new { htmlAttributes 
+            = new { @class = "form-control", @placeholder = "your email address (required)" } })
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+    </div>
+    <div class="dropdown dropleft">
+        @Html.DropDownListFor(m => m.UserParkChoice, states, "Select Your Residence State")
+    </div>
+    <div class="btn-group btn-group-lg">
+        <buton type="button" class="btn btn-primary">Inactive</buton>
+        <buton type="button" class="btn btn-primary">Sedentary</buton>
+        <buton type="button" class="btn btn-primary">Active</buton>
+        <buton type="button" class="btn btn-primary">Extremely Active</buton>
+    </div>
+<button type ="submit" class="btn btn-primary">Submit</button>
+}

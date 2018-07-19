@@ -11,26 +11,26 @@ namespace Capstone.Web.Models
     public class Survey
     {
         public int SurveyId { get; set; }
+        
+        public string UserParkChoice { get; set; }
+        public string UserStateChoice { get; set; }
+        public string UserActivityChoice { get; set; }
 
         private static IParkDAL _parkdal;
 
-        public Survey(IParkDAL parkDAL)
-        {
-            _parkdal = parkDAL;
-        }
 
-        [Required(ErrorMessage = "Park Code is required")]
+
+        [Required]
         [DataType(DataType.Text)]
-        public static List<SelectListItem> Parks = new List<SelectListItem>(_parkdal.GetParksForMenu())
-        {
-        };
+        public List<SelectListItem> Parks { get; set; } = new List<SelectListItem>();
+       
 
         [Required]
         [EmailAddress(ErrorMessage = "Enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 
-        [Required(ErrorMessage = "Activity is required")]
+        [Required]
         [DataType(DataType.Text)]
         public static List<SelectListItem> ActivityLevel = new List<SelectListItem>()
         {
@@ -40,9 +40,9 @@ namespace Capstone.Web.Models
             new SelectListItem() {Text="Extremely Active", Value="Extremely Active"}
         };
 
-        [Required(ErrorMessage = "State is required")]
+        [Required]
         [DataType(DataType.Text)]
-        public static List<SelectListItem> States = new List<SelectListItem>()
+        public static List<SelectListItem> States { get; set; } = new List<SelectListItem>()
         {
             new SelectListItem() {Text="Alabama", Value="AL"},
             new SelectListItem() { Text="Alaska", Value="AK"},
@@ -96,5 +96,20 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text="Wisconsin", Value="WI"},
             new SelectListItem() { Text="Wyoming", Value="WY"}
         };
+        
+        public List<SelectListItem> GetParksList()
+        {
+            return Parks;
+        }
+
+        public List<SelectListItem> GetStatesList()
+        {
+            return States;
+        }
+
+        public List<SelectListItem> GetActivityList()
+        {
+            return ActivityLevel;
+        }
     }
 }

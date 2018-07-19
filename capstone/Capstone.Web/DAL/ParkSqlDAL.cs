@@ -104,7 +104,7 @@ namespace Capstone.Web.DAL
         {
             List<SelectListItem> parks = new List<SelectListItem>();
             
-            string sqlquery = "Select [parkCode],[parkName] from FROM [NPGeek].[dbo].[park]";
+            string sqlquery = "Select [parkCode],[parkName] FROM [NPGeek].[dbo].[park]";
             
             using (SqlConnection connection = new SqlConnection(_connection))
             {

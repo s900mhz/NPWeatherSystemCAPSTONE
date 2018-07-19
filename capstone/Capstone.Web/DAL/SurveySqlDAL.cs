@@ -38,17 +38,14 @@ namespace Capstone.Web.DAL
                     Survey survey= new Survey();
 
                     survey.SurveyId = Convert.ToInt32(reader["surveyId"]);
-                    survey.ParkCode = Convert.ToString(reader["parkCode"]);
+                    survey.UserParkChoice = Convert.ToString(reader["parkCode"]);
                     survey.EmailAddress = Convert.ToString(reader["subject"]);
-                    survey.State = Convert.ToString(reader["state"]);
-                    survey.ActivityLevel= Convert.ToString(reader["activityLevel"]);
-
-
-
+                    survey.UserStateChoice = Convert.ToString(reader["state"]);
+                    survey.UserActivityChoice= Convert.ToString(reader["activityLevel"]);
+                    
                     surveys.Add(survey);
                 }
             }
-
             return surveys;
         }
 
@@ -59,13 +56,12 @@ namespace Capstone.Web.DAL
                 connection.Open();
 
                 const string sqlForumCommand = "INSERT INTO survey_result (parkCode,emailAddress,state,activityLevel) VALUES (@parkCode,@emailAddress,@state,@activityLevel)";
-
-
+                
                 SqlCommand cmd = new SqlCommand();
-                cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
+                cmd.Parameters.AddWithValue("@parkCode", survey.UserParkChoice);
                 cmd.Parameters.AddWithValue("@emailAddress", survey.EmailAddress);
-                cmd.Parameters.AddWithValue("@state", survey.State);
-                cmd.Parameters.AddWithValue("@activityLevel", survey.ActivityLevel);
+                cmd.Parameters.AddWithValue("@state", survey.UserStateChoice);
+                cmd.Parameters.AddWithValue("@activityLevel", survey.UserActivityChoice);
                 cmd.CommandText = sqlForumCommand;
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();

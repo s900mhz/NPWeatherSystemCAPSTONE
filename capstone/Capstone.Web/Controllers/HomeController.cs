@@ -46,8 +46,10 @@ namespace Capstone.Web.Controllers
         // GET: Home/Survey
         public ActionResult Survey()
         {
+            Survey survey = new Survey();
+            PopulateParkMenu(_parkdal.GetParksForMenu(), survey);
 
-            return View("Survey");
+            return View("Survey", survey);
         }
 
         // POST: Home/Survey
@@ -72,6 +74,11 @@ namespace Capstone.Web.Controllers
         public ActionResult Favorites()
         {
             return View("Favorites");
+        }
+
+        private void PopulateParkMenu(IList<SelectListItem> list, Survey survey)
+        {
+            survey.Parks.AddRange(list);
         }
     }
 }
