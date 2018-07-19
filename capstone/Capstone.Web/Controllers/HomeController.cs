@@ -61,7 +61,7 @@ namespace Capstone.Web.Controllers
             //Validate the model before proceeding
             if (!ModelState.IsValid)
             {
-                result = View("Register", survey);
+                result = View("Survey", survey);
             }
             else
             {

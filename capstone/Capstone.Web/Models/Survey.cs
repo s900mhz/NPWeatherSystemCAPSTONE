@@ -11,37 +11,25 @@ namespace Capstone.Web.Models
     public class Survey
     {
         public int SurveyId { get; set; }
-        
-        public string UserParkChoice { get; set; }
-        public string UserStateChoice { get; set; }
-        public string UserActivityChoice { get; set; }
-
-        private static IParkDAL _parkdal;
-
-
 
         [Required]
         [DataType(DataType.Text)]
-        public List<SelectListItem> Parks { get; set; } = new List<SelectListItem>();
-       
+        public string UserParkChoice { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = "Enter a valid email address.")]
+        [DataType(DataType.Text)]
+        public string UserStateChoice { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string UserActivityChoice { get; set; }
+        
+        public List<SelectListItem> Parks { get; set; } = new List<SelectListItem>();
+       
+        [Required(ErrorMessage = "Enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 
-        [Required]
-        [DataType(DataType.Text)]
-        public static List<SelectListItem> ActivityLevel = new List<SelectListItem>()
-        {
-            new SelectListItem() {Text="Inactive", Value="Inactive"},
-            new SelectListItem() {Text="Sedentary", Value="Sedentary"},
-            new SelectListItem() {Text="Active", Value="Active"},
-            new SelectListItem() {Text="Extremely Active", Value="Extremely Active"}
-        };
-
-        [Required]
-        [DataType(DataType.Text)]
         public static List<SelectListItem> States { get; set; } = new List<SelectListItem>()
         {
             new SelectListItem() {Text="Alabama", Value="AL"},
@@ -107,9 +95,5 @@ namespace Capstone.Web.Models
             return States;
         }
 
-        public List<SelectListItem> GetActivityList()
-        {
-            return ActivityLevel;
-        }
     }
 }
