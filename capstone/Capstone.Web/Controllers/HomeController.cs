@@ -13,6 +13,7 @@ namespace Capstone.Web.Controllers
         private IWeatherDAL _weatherDAL;
         private ISurveyDAL _surveyDal;
         private IParkDAL _parkdal;
+
         public HomeController(IParkDAL parkDAL, ISurveyDAL surveyDAL, IWeatherDAL weatherDAL)
         {
             _parkdal = parkDAL;
@@ -29,8 +30,7 @@ namespace Capstone.Web.Controllers
             
             return View("Index", parks);
         }
-
-
+        
         // GET: Home/Detail
         public ActionResult Detail(string parkCode)
         {
@@ -42,11 +42,11 @@ namespace Capstone.Web.Controllers
 
             return View("Detail",model);
         }
-
-
+        
         // GET: Home/Survey
         public ActionResult Survey()
         {
+
             return View("Survey");
         }
 
@@ -54,12 +54,20 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult Survey(Survey survey)
         {
+            ActionResult result;
 
-
-            return RedirectToAction("Favorites");
+            //Validate the model before proceeding
+            if (!ModelState.IsValid)
+            {
+                result = View("Register", survey);
+            }
+            else
+            {
+                result = RedirectToAction("Favorites");
+            }
+            return result;
         }
-
-
+        
         // GET: Home/Favorites
         public ActionResult Favorites()
         {
