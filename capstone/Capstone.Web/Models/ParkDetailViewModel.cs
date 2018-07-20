@@ -23,7 +23,9 @@ namespace Capstone.Web.Models
         public string ParkDescription { get; set; }
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
+        public bool IsFahrenheit { get; set; } = true;
 
+   
         //weather properties to display
         //public int FiveDayForecastValue { get; set; }
         //public int Low { get; set; }
@@ -56,9 +58,9 @@ namespace Capstone.Web.Models
         }
 
         //This method takes the bool from the checkbox in the view, feeds it in and then switches all the temp types in the forecast
-        public void ToggleTempType(bool isFahrenheit)
+        public void ToggleTempType()
         {
-            if (isFahrenheit)
+            if (IsFahrenheit)
             {
                 foreach (var weather in Forecast)
                 {

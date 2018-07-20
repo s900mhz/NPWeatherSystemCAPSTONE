@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Capstone.Web.DAL.Interfaces;
 using Capstone.Web.Models;
 
+
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
@@ -20,7 +21,7 @@ namespace Capstone.Web.Controllers
             _surveyDal = surveyDAL;
             _weatherDAL = weatherDAL;
         }
-
+        //bool x = (bool)System.Web.HttpContext.Current.Session["Temp"];
         // GET: /
         // GET: Home/
         // GET: Home/Index

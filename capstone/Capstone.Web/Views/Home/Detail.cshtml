@@ -91,9 +91,16 @@
 </div>
 <br>
 <div class="row">
-    <h2>
-        Five Day Forecast:
-    </h2>
+    <div>
+        <h2>
+            Five Day Forecast:
+            <input type="checkbox" checked data-toggle="toggle" id="IsFahrenheit" name="IsFahrenheit" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info">
+            @Html.CheckBoxFor(m=>m.IsFahrenheit)
+        </h2>
+        
+    </div>
+   
+    
 </div>
 <div class="row">
     @for (int i = 0; i < Model.Forecast.Count; i++)
@@ -159,7 +166,7 @@
         <h4>
             Low Today:
             @Model.Forecast[0].GetPreferredLowTemp()
-            
+
         </h4>
     </div>
     <div class="col-sm-2">
