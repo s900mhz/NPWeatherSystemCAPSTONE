@@ -30,6 +30,7 @@
     </div>
     <div class="col-sm-5">
         @Html.DropDownListFor(m => m.UserParkChoice, parks, "Select Your Favorite Park")
+        @Html.ValidationMessageFor(m => m.UserParkChoice)
     </div>
 </div>
     <div class="row">
@@ -49,7 +50,8 @@
             State:
         </div>
         <div class="col-sm-5">
-            @Html.DropDownListFor(m => m.UserParkChoice, states, "Select Your Residence State")
+            @Html.DropDownListFor(m => m.UserStateChoice, states, "Select Your Residence State")
+            @Html.ValidationMessageFor(m => m.UserStateChoice)
         </div>
     </div>
     <div class="row">
@@ -59,17 +61,22 @@
         <div class="col-sm-8">
             <div class="btn-group btn-group" data-toggle="buttons">
                 <label class="btn btn-primary">
-                    <input data-val="true" data-val-required="The UserActivityChoice field is required." 
-                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Inactive</label>
+                    <input data-val="true" data-val-required="The UserActivityChoice field is required."
+                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Inactive
+                </label>
                 <label class="btn btn-primary">
                     <input data-val="true" data-val-required="The UserActivityChoice field is required."
-                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Sedentary</label>
+                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Sedentary
+                </label>
                 <label class="btn btn-primary">
                     <input data-val="true" data-val-required="The UserActivityChoice field is required."
-                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Active</label>
+                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Active
+                </label>
                 <label class="btn btn-primary">
                     <input data-val="true" data-val-required="The UserActivityChoice field is required."
-                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Extremely Active</label>
+                           id="UserActivityChoice" name="UserActivityChoice" type="radio" value="Inactive" class="form-check-input" />Extremely Active
+                </label>
+                @Html.ValidationMessageFor(m => m.UserActivityChoice)
             </div>
         </div>
     </div>

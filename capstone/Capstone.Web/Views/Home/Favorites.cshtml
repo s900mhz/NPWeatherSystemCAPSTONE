@@ -1,1 +1,18 @@
-﻿
+﻿@using Capstone.Web.Models
+
+@model FavoriteViewModel
+
+
+<h2>* Favorite Parks *</h2>
+<h4>...and the results are in!</h4>
+<h4>Results from our users are ranked below.</h4>
+<p style="font-size: small">Thank you for your feedback and for voting!</p>
+<hr>
+
+
+
+@Model.ParkCode
+@Model.ParkName
+@Model.State
+@Model.NumOfSurveys
+

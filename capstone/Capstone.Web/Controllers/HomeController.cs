@@ -61,11 +61,13 @@ namespace Capstone.Web.Controllers
             //Validate the model before proceeding
             if (!ModelState.IsValid)
             {
+                PopulateParkMenu(_parkdal.GetParksForMenu(), survey);
                 result = View("Survey", survey);
             }
             else
             {
-                result = RedirectToAction("Favorites");
+                _surveyDal.SaveSurvey(survey);
+                result = RedirectToAction("Favorites", survey);
             }
             return result;
         }
@@ -73,7 +75,10 @@ namespace Capstone.Web.Controllers
         // GET: Home/Favorites
         public ActionResult Favorites()
         {
-            return View("Favorites");
+            FavoriteViewModel model = new FavoriteViewModel();
+
+            _surveyDal.GetSurveys();
+            return View("Favorites", model);
         }
 
         private void PopulateParkMenu(IList<SelectListItem> list, Survey survey)
