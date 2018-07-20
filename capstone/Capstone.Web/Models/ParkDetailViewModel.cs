@@ -55,6 +55,24 @@ namespace Capstone.Web.Models
             Forecast = forecast;
         }
 
+        //This method takes the bool from the checkbox in the view, feeds it in and then switches all the temp types in the forecast
+        public void ToggleTempType(bool isFahrenheit)
+        {
+            if (isFahrenheit)
+            {
+                foreach (var weather in Forecast)
+                {
+                    weather.isFahrenheit = true;
+                }
+            }
+            else
+            {
+                foreach (var weather in Forecast)
+                {
+                    weather.isFahrenheit = false;
+                }
+            }
+        }
         
     }
 }
