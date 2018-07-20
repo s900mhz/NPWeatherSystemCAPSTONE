@@ -10,12 +10,27 @@ namespace Capstone.Web.DAL
 {
     public class WeatherSqlDAL : IWeatherDAL
     {
+        #region Variables
         string _connection = "";
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
         public WeatherSqlDAL(string connection)
         {
             _connection = connection;
         }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parkCode"></param>
+        /// <returns></returns>
         public List<Weather> GetFiveDayForecast(string parkCode)
         {
             List<Weather> forecast = new List<Weather>();
@@ -40,12 +55,12 @@ namespace Capstone.Web.DAL
                     weather.Low = Convert.ToInt32(reader["low"]);
                     weather.High = Convert.ToInt32(reader["high"]);
                     weather.Forecast = Convert.ToString(reader["forecast"]);
-
-
+                    
                     forecast.Add(weather);
                 }
             }
             return forecast;
         }
+        #endregion
     }
 }

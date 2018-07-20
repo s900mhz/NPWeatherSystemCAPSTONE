@@ -39,7 +39,7 @@ namespace Capstone.Web.DAL
 
                     survey.SurveyId = Convert.ToInt32(reader["surveyId"]);
                     survey.UserParkChoice = Convert.ToString(reader["parkCode"]);
-                    survey.EmailAddress = Convert.ToString(reader["subject"]);
+                    survey.EmailAddress = Convert.ToString(reader["emailAddress"]);
                     survey.UserStateChoice = Convert.ToString(reader["state"]);
                     survey.UserActivityChoice= Convert.ToString(reader["activityLevel"]);
                     

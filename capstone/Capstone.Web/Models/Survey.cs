@@ -10,26 +10,9 @@ namespace Capstone.Web.Models
 {
     public class Survey
     {
+        #region Properties 
         public int SurveyId { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string UserParkChoice { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string UserStateChoice { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string UserActivityChoice { get; set; }
-        
         public List<SelectListItem> Parks { get; set; } = new List<SelectListItem>();
-       
-        [Required(ErrorMessage = "Enter a valid email address.")]
-        [DataType(DataType.EmailAddress)]
-        public string EmailAddress { get; set; }
-
         public static List<SelectListItem> States { get; set; } = new List<SelectListItem>()
         {
             new SelectListItem() {Text="Alabama", Value="AL"},
@@ -84,16 +67,43 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text="Wisconsin", Value="WI"},
             new SelectListItem() { Text="Wyoming", Value="WY"}
         };
-        
+        #endregion
+
+        #region Validated Properties
+        [Required(ErrorMessage = "Select a valid Park.")]
+        [DataType(DataType.Text)]
+        public string UserParkChoice { get; set; }
+
+        [Required(ErrorMessage = "Select a valid State.")]
+        [DataType(DataType.Text)]
+        public string UserStateChoice { get; set; }
+
+        [Required(ErrorMessage = "Must Select One.")]
+        [DataType(DataType.Text)]
+        public string UserActivityChoice { get; set; }
+       
+        [Required(ErrorMessage = "Email address required.")]
+        [DataType(DataType.EmailAddress)]
+        public string EmailAddress { get; set; }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Returns the list of Parks for use in the view
+        /// </summary>
+        /// <returns>a selectListItem for the dropdown menu</returns>
         public List<SelectListItem> GetParksList()
         {
             return Parks;
         }
-
+        /// <summary>
+        /// Returns the list of States for use in the view
+        /// </summary>
+        /// <returns>a SelectListItem for States dropdown menu</returns>
         public List<SelectListItem> GetStatesList()
         {
             return States;
         }
-
+        #endregion
     }
 }
