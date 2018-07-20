@@ -6,7 +6,9 @@
 @{
     string jpeg = ".jpg";
     string png = ".png";
+    string temptype= (string) Session["temp"];
 }
+
 <style>
     h4 {
         font-weight: bold;
@@ -94,9 +96,29 @@
     <div>
         <h2>
             Five Day Forecast:
-            <input type="checkbox" checked data-toggle="toggle" id="IsFahrenheit" name="IsFahrenheit" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info">
-            @Html.CheckBoxFor(m=>m.IsFahrenheit)
-        </h2>
+            <input ontoggle="window.location.reload()" type="checkbox" checked data-toggle="toggle" id="IsFahrenheit" name="IsFahrenheit" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="IsFahrenheit" type="hidden" value="false" />
+
+            <div class="form-group">
+                <label class="col-md-3" for="checkboxField">Checkbox Label</label>
+                <div class="col-md-9">
+                    <!-- bootstrap button group -->
+                    <div class="btn-group btn-toggle-radio" data-toggle="buttons-radio">
+                        <button type="button" data-model-field="checkboxField" class="btn btn-default" id="buttonFilterYes">Yes</button>
+                        <button type="button" data-model-field="checkboxField" class="btn btn-success active" id="buttonFilterNo">No</button>
+                    </div>
+                    <!-- MVC razor code -->
+                    @Html.CheckBox("scale",temptype)
+
+               </div>
+           </div>
+                @*@using (Html.BeginForm("Detail", "Home"))
+    {
+            @Html.CheckBox("scale",temptype,new {)
+        <input type="hidden" id="parkCode" name="parkCode" value="@Model.ParkCode" />
+                <button> DO IT </button>
+    }*@
+
+</h2>
         
     </div>
    

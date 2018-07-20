@@ -7,6 +7,8 @@ namespace Capstone.Web.Models
 {
     public class ParkDetailViewModel
     {
+        private bool _isFahrenheit;
+
         //park detail properties
         public string ParkCode { get; set; }
         public string ParkName { get; set; }
@@ -23,7 +25,19 @@ namespace Capstone.Web.Models
         public string ParkDescription { get; set; }
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
-        public bool IsFahrenheit { get; set; } = true;
+        public bool IsFahrenheit
+        {
+            get
+            {
+               return _isFahrenheit;
+            }
+            set
+            {
+                _isFahrenheit = value;
+                ToggleTempType();
+            }
+        }
+    
 
    
         //weather properties to display
