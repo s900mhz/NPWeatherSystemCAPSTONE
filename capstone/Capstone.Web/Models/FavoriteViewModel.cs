@@ -7,10 +7,11 @@ namespace Capstone.Web.Models
 {
     public class FavoriteViewModel
     {
+        #region Properties
         public int SurveyId { get; set; }
         public string ParkCode { get; set; }
         public string ParkName { get; set; }
-        public string State { get; set; }
         public int NumOfSurveys { get; set; }
+        #endregion
     }
 }

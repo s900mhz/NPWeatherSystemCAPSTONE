@@ -7,6 +7,7 @@ namespace Capstone.Web.Models
 {
     public class Park
     {
+        #region Properties
         public string ParkCode { get; set; }
 	    public string ParkName { get; set; }
         public string State { get; set; }
@@ -22,5 +23,6 @@ namespace Capstone.Web.Models
         public string ParkDescription { get; set; }
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
+        #endregion
     }
 }
