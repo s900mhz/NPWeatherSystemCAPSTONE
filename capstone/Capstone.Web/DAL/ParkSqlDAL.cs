@@ -11,12 +11,23 @@ namespace Capstone.Web.DAL
 {
     public class ParkSqlDAL : IParkDAL
     {
+        #region Member Variables
         string _connection = "";
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// constructor
+        /// </summary>
         public ParkSqlDAL(string connection)
         {
             _connection = connection;
         }
-
+        
+        /// <summary>
+        /// Get all the park details from DB
+        /// </summary>
+        /// <returns>a List of Park objects</returns>
         public List<Park> GetAllParks()
         {
             List<Park> parks = new List<Park>();
@@ -59,6 +70,12 @@ namespace Capstone.Web.DAL
             }
             return parks;
         }
+
+        /// <summary>
+        /// gets the Park details from a specific parkCode
+        /// </summary>
+        /// <param name="parkCode"></param>
+        /// <returns>a populated Park Object</returns>
         public Park GetParkByCode(string parkCode)
         {
            Park park = new Park();
@@ -100,6 +117,11 @@ namespace Capstone.Web.DAL
             return park;
         }
 
+        /// <summary>
+        /// gets the list of Parks and codes from the DB to
+        /// populate the drop down. Scales to any number of parks added later
+        /// </summary>
+        /// <returns>an IList in SelectListItem format for a menu</returns>
         public IList<SelectListItem> GetParksForMenu()
         {
             List<SelectListItem> parks = new List<SelectListItem>();
@@ -128,5 +150,6 @@ namespace Capstone.Web.DAL
                 return parks;
             }
         }
+        #endregion
     }
 }

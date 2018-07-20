@@ -9,7 +9,7 @@ namespace Capstone.Web.DAL.Interfaces
 {
     public interface ISurveyDAL
     {
-        List<Survey> GetSurveys();
+        List<FavoriteViewModel> GetSurveys();
         void SaveSurvey(Survey survey);
     }
 }

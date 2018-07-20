@@ -96,9 +96,7 @@ namespace Capstone.Web.Controllers
         // GET: Home/Favorites
         public ActionResult Favorites()
         {
-            FavoriteViewModel model = new FavoriteViewModel();
-
-            _surveyDal.GetSurveys();
+            var model = _surveyDal.GetSurveys();
             return View("Favorites", model);
         }
 

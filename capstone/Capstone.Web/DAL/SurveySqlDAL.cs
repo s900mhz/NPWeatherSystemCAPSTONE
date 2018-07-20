@@ -10,45 +10,62 @@ namespace Capstone.Web.DAL
 {
     public class SurveySqlDAL : ISurveyDAL
     {
+        #region Member Variables
         string _connection = "";
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="connection">connection string</param>
         public SurveySqlDAL(string connection)
         {
             _connection = connection;
         }
 
-        public List<Survey> GetSurveys()
+        /// <summary>
+        /// Gets all survey data from DB
+        /// </summary>
+        /// <returns>a List of Survey objects</returns>
+        public List<FavoriteViewModel> GetSurveys()
         {
-            List<Survey> surveys = new List<Survey>();
+            List<FavoriteViewModel> result = new List<FavoriteViewModel>();
 
             using (SqlConnection connection = new SqlConnection(_connection))
             {
                 connection.Open();
 
-                const string sqlParkCommand = "SELECT[surveyId], [parkCode], [emailAddress],[state],[activityLevel] FROM[NPGeek].[dbo].[survey_result]";
+                const string sqlParkCommand = "select COUNT(survey_result.parkCode) as parkCount, park.parkCode, Park.parkName, Park.parkDescription " +
+                    "from survey_result JOIN park on park.parkCode = survey_result.parkCode " +
+                    "group by Park.parkDescription, park.parkName, park.parkCode " +
+                    "order by COUNT(survey_result.parkCode) desc;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = sqlParkCommand;
                 cmd.Connection = connection;
 
                 //Pull data off the table
                 SqlDataReader reader = cmd.ExecuteReader();
-
                 
                 while (reader.Read())
                 {
-                    Survey survey= new Survey();
-
-                    survey.SurveyId = Convert.ToInt32(reader["surveyId"]);
-                    survey.UserParkChoice = Convert.ToString(reader["parkCode"]);
-                    survey.EmailAddress = Convert.ToString(reader["emailAddress"]);
-                    survey.UserStateChoice = Convert.ToString(reader["state"]);
-                    survey.UserActivityChoice= Convert.ToString(reader["activityLevel"]);
+                    var favorites= new FavoriteViewModel();
                     
-                    surveys.Add(survey);
+                    favorites.ParkCode = Convert.ToString(reader["parkCode"]);
+                    favorites.ParkName = Convert.ToString(reader["parkName"]);
+                    favorites.NumOfSurveys= Convert.ToInt32(reader["parkCount"]);
+
+                    result.Add(favorites);
                 }
             }
-            return surveys;
+            return result;
         }
 
+        /// <summary>
+        /// Saves a survey from the user in a survey object and 
+        /// Inserts in the survey DB
+        /// </summary>
+        /// <param name="survey">takes a Survey object parameter</param>
         public void SaveSurvey(Survey survey)
         {
             using (SqlConnection connection = new SqlConnection(_connection))
@@ -67,5 +84,6 @@ namespace Capstone.Web.DAL
                 cmd.ExecuteNonQuery();
             }
         }
+        #endregion
     }
 }

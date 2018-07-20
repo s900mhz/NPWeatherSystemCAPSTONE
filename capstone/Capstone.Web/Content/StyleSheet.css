@@ -1,4 +1,9 @@
 ﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2, h1 {
+    font-variant: small-caps;
 }
 .container {
     position: relative;

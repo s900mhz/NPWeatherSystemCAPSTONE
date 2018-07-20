@@ -1,7 +1,11 @@
 ﻿@using Capstone.Web.Models
 
-@model FavoriteViewModel
+@model List<FavoriteViewModel>
 
+@{
+    string jpeg = ".jpg";
+    string png = ".png";
+}
 
 <h2>* Favorite Parks *</h2>
 <h4>...and the results are in!</h4>
@@ -9,10 +13,20 @@
 <p style="font-size: small">Thank you for your feedback and for voting!</p>
 <hr>
 
+@foreach (var item in Model)
+{
+    <div class="media">
+        <div class="media-left media-middle">
 
-
-@Model.ParkCode
-@Model.ParkName
-@Model.State
-@Model.NumOfSurveys
-
+            <img src="~/Content/img/parks/@item.ParkCode@jpeg" class="media-object img-fluid" style="padding:8px" />
+        </div>
+        <div class="media-body media-middle">
+            <h2 style="font-weight:bold" class="media-heading"> @item.ParkName</h2>
+            <h3 style="color:darkslategrey">Total Votes: @item.NumOfSurveys</h3>
+            <br>
+            
+        </div>
+        <br>
+    </div>
+    
+}
