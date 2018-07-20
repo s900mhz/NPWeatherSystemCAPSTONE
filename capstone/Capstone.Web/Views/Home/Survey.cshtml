@@ -12,6 +12,9 @@
     .field-validation-error {
         color: red;
     }
+    .row {
+        padding: 7px; 
+    }
 </style>
 
 <h2>* Submit Your Survey *</h2>
@@ -22,35 +25,38 @@
 @using (Html.BeginForm("Survey", "Home", FormMethod.Post))
 {
 <div class="row">
-    <div class="col-sm-2" style="text-align:right">
+    <div class="col-sm-3" style="text-align:right">
         Vote HERE:
     </div>
-    <div class="col-sm-5" style="height: 34px; padding: 6px 12px">
+    <div class="col-sm-5">
         @Html.DropDownListFor(m => m.UserParkChoice, parks, "Select Your Favorite Park")
     </div>
 </div>
     <div class="row">
-        <div class="col-sm-2" style="text-align:right">
+        <div class="col-sm-3" style="text-align:right; padding-top: 5px">
             Sign-up (required):
         </div>
-        <div class="col-sm-5">
-            <input class="form-control form-control" data-val="true" data-val-required="Enter a valid email address." id="EmailAddress" name="EmailAddress" placeholder="email address (required)" type="email" value="" />
+        <div class="col-sm-4">
+            <input class="form-control" data-val="true"
+                   data-val-required="Enter a valid email address." id="EmailAddress"
+                   name="EmailAddress" placeholder="email address (required)" 
+                   type="email" value=""/>
             @Html.ValidationMessageFor(m => m.EmailAddress)
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" style="text-align:right">
+        <div class="col-sm-3" style="text-align:right">
             State:
         </div>
-        <div class="col-sm-5" style="height: 34px; padding: 6px 12px">
+        <div class="col-sm-5">
             @Html.DropDownListFor(m => m.UserParkChoice, states, "Select Your Residence State")
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" style="text-align:right">
+        <div class="col-sm-3" style="text-align:right; padding-top: 5px">
             Rate the activity level:
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-8">
             <div class="btn-group btn-group" data-toggle="buttons">
                 <label class="btn btn-primary">
                     <input data-val="true" data-val-required="The UserActivityChoice field is required." 
@@ -67,9 +73,9 @@
             </div>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-sm-2"> </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6"> </div><div>
             <button type="submit" class="btn btn-primary" style="padding:5px">Submit</button>
         </div>
     </div>
