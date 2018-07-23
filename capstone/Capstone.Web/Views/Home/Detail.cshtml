@@ -142,11 +142,19 @@
             {
                 <p>@Weather.FreezeWarning</p>
             }
+<<<<<<< HEAD
             @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.HeatWarning))
             {
                 <p>@Weather.HeatWarning</p>
             }
             @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.TempSwing))
+=======
+            @if(Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.HeatWarning))
+            {
+                <p>@Weather.HeatWarning</p>
+            }
+            @if(Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.TempSwing))
+>>>>>>> 93258cfb9a23b032fa90bb0820b74d607c759bc0
             {
                 <p>@Weather.TempSwing</p>
             }
