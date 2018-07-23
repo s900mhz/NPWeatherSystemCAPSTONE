@@ -96,29 +96,28 @@
     <div>
         <h2>
             Five Day Forecast:
-            <input ontoggle="window.location.reload()" type="checkbox" checked data-toggle="toggle" id="IsFahrenheit" name="IsFahrenheit" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="IsFahrenheit" type="hidden" value="false" />
+            @*<input type="checkbox" checked data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />*@
 
-            <div class="form-group">
-                <label class="col-md-3" for="checkboxField">Checkbox Label</label>
-                <div class="col-md-9">
-                    <!-- bootstrap button group -->
-                    <div class="btn-group btn-toggle-radio" data-toggle="buttons-radio">
-                        <button type="button" data-model-field="checkboxField" class="btn btn-default" id="buttonFilterYes">Yes</button>
-                        <button type="button" data-model-field="checkboxField" class="btn btn-success active" id="buttonFilterNo">No</button>
-                    </div>
-                    <!-- MVC razor code -->
-                    @Html.CheckBox("scale",temptype)
 
-               </div>
-           </div>
-                @*@using (Html.BeginForm("Detail", "Home"))
-    {
-            @Html.CheckBox("scale",temptype,new {)
-        <input type="hidden" id="parkCode" name="parkCode" value="@Model.ParkCode" />
-                <button> DO IT </button>
-    }*@
+            @using (Html.BeginForm("Detail", "Home"))
+            {
+                if (Convert.ToBoolean(Session["button"]) == true)
+                {
+                    <input type="checkbox" checked data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />
+                }
+                else
+                {
+                    <input type="checkbox" data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />
+                }
 
-</h2>
+                @*<div class="custom-checkbox"><label style="font-size:small">@Html.CheckBox("scale", temptype) Checked for Fahrenheit</label> </div>*@
+
+                <input type="hidden" id="parkCode" name="parkCode" value="@Model.ParkCode" />
+                <button  class="btn btn-primary">Switch!</button>
+
+            }
+
+        </h2>
         
     </div>
    
@@ -133,6 +132,25 @@
                     <div class="text" style="font-size:medium">@Model.Forecast[i].GetWeatherMessage()</div>
                 </div>
             </div>
+    }
+</div>
+<div class="row">
+    @for (int i = 0; i < Model.Forecast.Count; i++)
+    {
+        <div class="col-sm-2">
+            @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.FreezeWarning))
+            {
+                <p>@Weather.FreezeWarning</p>
+            }
+            @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.HeatWarning))
+            {
+                <p>@Weather.HeatWarning</p>
+            }
+            @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.TempSwing))
+            {
+                <p>@Weather.TempSwing</p>
+            }
+        </div>
     }
 </div>
 <div class="row">

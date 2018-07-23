@@ -7,6 +7,7 @@ namespace Capstone.Web.Models
 {
     public class ParkDetailViewModel
     {
+        #region Properties
         private bool _isFahrenheit;
 
         //park detail properties
@@ -37,9 +38,9 @@ namespace Capstone.Web.Models
                 ToggleTempType();
             }
         }
-    
+        #endregion
 
-   
+
         //weather properties to display
         //public int FiveDayForecastValue { get; set; }
         //public int Low { get; set; }

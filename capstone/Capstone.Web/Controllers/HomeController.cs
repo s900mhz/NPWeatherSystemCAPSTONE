@@ -43,6 +43,7 @@ namespace Capstone.Web.Controllers
             else
             {
                 Session["temp"] = scale;
+                Session["button"] = scale;
             }
 
          
