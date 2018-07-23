@@ -6,7 +6,7 @@
 @{
     string jpeg = ".jpg";
     string png = ".png";
-    string temptype= (string) Session["temp"];
+    string temptype = (string)Session["temp"];
 }
 
 <style>
@@ -113,25 +113,25 @@
                 @*<div class="custom-checkbox"><label style="font-size:small">@Html.CheckBox("scale", temptype) Checked for Fahrenheit</label> </div>*@
 
                 <input type="hidden" id="parkCode" name="parkCode" value="@Model.ParkCode" />
-                <button  class="btn btn-primary">Switch!</button>
+                <button class="btn btn-primary">Switch!</button>
 
             }
 
         </h2>
-        
+
     </div>
-   
-    
+
+
 </div>
 <div class="row">
     @for (int i = 0; i < Model.Forecast.Count; i++)
     {
-            <div class="col-sm-2">
-                <img src="~/Content/img/weather/@Model.Forecast[i].GetImgName()@png" class="image img-thumbnail">
-                <div class="overlay">
-                    <div class="text" style="font-size:medium">@Model.Forecast[i].GetWeatherMessage()</div>
-                </div>
+        <div class="col-sm-2">
+            <img src="~/Content/img/weather/@Model.Forecast[i].GetImgName()@png" class="image img-thumbnail">
+            <div class="overlay">
+                <div class="text" style="font-size:medium">@Model.Forecast[i].GetWeatherMessage()</div>
             </div>
+        </div>
     }
 </div>
 <div class="row">
@@ -142,19 +142,11 @@
             {
                 <p>@Weather.FreezeWarning</p>
             }
-<<<<<<< HEAD
             @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.HeatWarning))
             {
                 <p>@Weather.HeatWarning</p>
             }
             @if (Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.TempSwing))
-=======
-            @if(Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.HeatWarning))
-            {
-                <p>@Weather.HeatWarning</p>
-            }
-            @if(Model.Forecast[i].GetUniqueTempNotification().Contains(Weather.TempSwing))
->>>>>>> 93258cfb9a23b032fa90bb0820b74d607c759bc0
             {
                 <p>@Weather.TempSwing</p>
             }
@@ -176,15 +168,15 @@
     </div>
     @for (int i = 3; i <= Model.Forecast.Count; i++)
     {
-    <div class="col-sm-2">
-        <h4>
-            Day @i -
-        </h4><h4>
-            @Model.Forecast[i - 1].Forecast
-        </h4>
-    </div>
+        <div class="col-sm-2">
+            <h4>
+                Day @i -
+            </h4><h4>
+                @Model.Forecast[i - 1].Forecast
+            </h4>
+        </div>
     }
-</div>   
+</div>
 <div class="row">
     <div class="col-sm-2">
         <h4>
