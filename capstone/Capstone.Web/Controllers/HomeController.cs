@@ -11,6 +11,7 @@ namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
+        
         private IWeatherDAL _weatherDAL;
         private ISurveyDAL _surveyDal;
         private IParkDAL _parkdal;
@@ -33,16 +34,35 @@ namespace Capstone.Web.Controllers
         }
         
         // GET: Home/Detail
-        public ActionResult Detail(string parkCode)
+        public ActionResult Detail(string parkCode,string scale)
         {
-            List<Weather> forecast = _weatherDAL.GetFiveDayForecast(parkCode);
-            Park park = _parkdal.GetParkByCode(parkCode);
-            ParkDetailViewModel model = new ParkDetailViewModel();
-            model.PopulateParkProperties(park);
-            model.PopulateForecast(forecast);
+            if (scale == null)
+            {
+                scale = "true";
+            }
+            else
+            {
+                Session["temp"] = scale;
+            }
 
-            return View("Detail",model);
+         
+            ParkDetailViewModel model = new ParkDetailViewModel();
+            
+                List<Weather> forecast = _weatherDAL.GetFiveDayForecast(parkCode);
+                Park park = _parkdal.GetParkByCode(parkCode);
+                
+                model.PopulateParkProperties(park);
+                model.PopulateForecast(forecast);
+                model.IsFahrenheit = Convert.ToBoolean(Session["temp"]);
+                    
+                return View("Detail", model);  
         }
+        //[HttpPost]
+        //public ActionResult Detail(ParkDetailViewModel model)
+        //{
+        //    Session["temp"] = (bool)model.IsFahrenheit;
+        //    return RedirectToAction("Detail","Home",Session["parkcode"].ToString());
+        //}
         
         // GET: Home/Survey
         public ActionResult Survey()
@@ -79,6 +99,19 @@ namespace Capstone.Web.Controllers
             var model = _surveyDal.GetSurveys();
             return View("Favorites", model);
         }
+
+        //public ActionResult SetScale(string scale, string parkCode)
+        //{
+        //    Session["Scale"] = scale;
+        //    ParkDetailViewModel model = new ParkDetailViewModel();
+
+        //    List<Weather> forecast = _weatherDAL.GetFiveDayForecast(parkCode);
+        //    Park park = _parkdal.GetParkByCode(parkCode);
+
+        //    model.PopulateParkProperties(park);
+        //    model.PopulateForecast(forecast);
+
+        //}
 
         private void PopulateParkMenu(IList<SelectListItem> list, Survey survey)
         {
