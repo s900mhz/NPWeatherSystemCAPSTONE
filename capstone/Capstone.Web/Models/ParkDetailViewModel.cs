@@ -38,17 +38,15 @@ namespace Capstone.Web.Models
                 ToggleTempType();
             }
         }
+        
+        public List<Weather> Forecast { get; set; }
         #endregion
 
-
-        //weather properties to display
-        //public int FiveDayForecastValue { get; set; }
-        //public int Low { get; set; }
-        //public int High { get; set; }
-        //public string Forecast { get; set; }
-
-        public List<Weather> Forecast { get; set; }
-
+        #region Methods
+        /// <summary>
+        /// a Method to populate the Park object for the detail page to display
+        /// </summary>
+        /// <param name="park">park object</param>
         public void PopulateParkProperties(Park park)
         {
             ParkCode = park.ParkCode;
@@ -67,12 +65,19 @@ namespace Capstone.Web.Models
             EntryFee = park.EntryFee;
             NumberOfAnimalSpecies = park.NumberOfAnimalSpecies;
         }
+
+        /// <summary>
+        /// a Method to set the Forecast property to a particular List of Weather objects
+        /// </summary>
+        /// <param name="forecast">a list of weather objects</param>
         public void PopulateForecast(List<Weather> forecast)
         {
             Forecast = forecast;
         }
 
-        //This method takes the bool from the checkbox in the view, feeds it in and then switches all the temp types in the forecast
+        /// <summary>
+        /// This method takes the bool from the checkbox in the view, feeds it in and then switches all the temp types in the forecast
+        /// </summary>
         public void ToggleTempType()
         {
             if (IsFahrenheit)

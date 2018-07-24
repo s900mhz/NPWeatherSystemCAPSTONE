@@ -34,6 +34,7 @@ namespace Capstone.Web.Models
         {
             return String.Format("{0}°F", Low);
         }
+
         /// <summary>
         /// method for return high farenheit temp
         /// </summary>
@@ -42,6 +43,7 @@ namespace Capstone.Web.Models
         {
             return String.Format("{0}°F", High);
         }
+
         /// <summary>
         /// method for return low celsius temp
         /// </summary>
@@ -50,6 +52,7 @@ namespace Capstone.Web.Models
         {
             return String.Format("{0}°C", CelsiusLow);
         }
+
         /// <summary>
         /// method for returning high celsius temp
         /// </summary>

@@ -22,7 +22,7 @@ namespace Capstone.Web.Controllers
             _surveyDal = surveyDAL;
             _weatherDAL = weatherDAL;
         }
-        //bool x = (bool)System.Web.HttpContext.Current.Session["Temp"];
+
         // GET: /
         // GET: Home/
         // GET: Home/Index
@@ -58,12 +58,6 @@ namespace Capstone.Web.Controllers
                     
                 return View("Detail", model);  
         }
-        //[HttpPost]
-        //public ActionResult Detail(ParkDetailViewModel model)
-        //{
-        //    Session["temp"] = (bool)model.IsFahrenheit;
-        //    return RedirectToAction("Detail","Home",Session["parkcode"].ToString());
-        //}
         
         // GET: Home/Survey
         public ActionResult Survey()
@@ -101,19 +95,12 @@ namespace Capstone.Web.Controllers
             return View("Favorites", model);
         }
 
-        //public ActionResult SetScale(string scale, string parkCode)
-        //{
-        //    Session["Scale"] = scale;
-        //    ParkDetailViewModel model = new ParkDetailViewModel();
-
-        //    List<Weather> forecast = _weatherDAL.GetFiveDayForecast(parkCode);
-        //    Park park = _parkdal.GetParkByCode(parkCode);
-
-        //    model.PopulateParkProperties(park);
-        //    model.PopulateForecast(forecast);
-
-        //}
-
+        /// <summary>
+        /// Method to add the parks to the menu used on Survey page, will scale to any number
+        /// of parks from the DB
+        /// </summary>
+        /// <param name="list">an IList of menu items</param>
+        /// <param name="survey">survey object</param>
         private void PopulateParkMenu(IList<SelectListItem> list, Survey survey)
         {
             survey.Parks.AddRange(list);

@@ -27,10 +27,10 @@ namespace Capstone.Web.DAL
 
         #region Methods
         /// <summary>
-        /// 
+        /// a Method to return a list of the forecast details based on specific park code primary key
         /// </summary>
-        /// <param name="parkCode"></param>
-        /// <returns></returns>
+        /// <param name="parkCode">parkCode primary key</param>
+        /// <returns>a List of Weather objects for a 5-day forecast</returns>
         public List<Weather> GetFiveDayForecast(string parkCode)
         {
             List<Weather> forecast = new List<Weather>();

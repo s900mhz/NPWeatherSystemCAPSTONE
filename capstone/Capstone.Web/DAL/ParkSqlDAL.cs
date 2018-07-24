@@ -74,7 +74,7 @@ namespace Capstone.Web.DAL
         /// <summary>
         /// gets the Park details from a specific parkCode
         /// </summary>
-        /// <param name="parkCode"></param>
+        /// <param name="parkCode">string that corresponds to SQL primary key of specific park to be displayed</param>
         /// <returns>a populated Park Object</returns>
         public Park GetParkByCode(string parkCode)
         {

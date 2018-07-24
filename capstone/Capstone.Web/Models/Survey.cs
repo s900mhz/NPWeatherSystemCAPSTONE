@@ -96,6 +96,7 @@ namespace Capstone.Web.Models
         {
             return Parks;
         }
+
         /// <summary>
         /// Returns the list of States for use in the view
         /// </summary>
