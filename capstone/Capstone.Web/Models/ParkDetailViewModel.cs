@@ -95,6 +95,6 @@ namespace Capstone.Web.Models
                 }
             }
         }
-        
+        #endregion
     }
 }
