@@ -8,7 +8,6 @@
     string png = ".png";
     string temptype = (string)Session["temp"];
 }
-
 <style>
     h4 {
         font-weight: bold;
@@ -96,26 +95,14 @@
     <div>
         <h2>
             Five Day Forecast:
-            @*<input type="checkbox" checked data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />*@
 
 
-            @using (Html.BeginForm("Detail", "Home"))
-            {
-                if (Convert.ToBoolean(Session["button"]) == true)
-                {
-                    <input type="checkbox" checked data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />
-                }
-                else
-                {
-                    <input type="checkbox" data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />
-                }
 
-                @*<div class="custom-checkbox"><label style="font-size:small">@Html.CheckBox("scale", temptype) Checked for Fahrenheit</label> </div>*@
 
-                <input type="hidden" id="parkCode" name="parkCode" value="@Model.ParkCode" />
-                <button class="btn btn-primary">Switch!</button>
+            <input type="checkbox" checked data-toggle="toggle" id="scale" name="scale" value="true" data-on="°F" data-off="°C" data-onstyle="success" data-offstyle="info"><input name="scale" type="hidden" value="false" />
 
-            }
+
+
 
         </h2>
 
@@ -181,13 +168,15 @@
     <div class="col-sm-2">
         <h4>
             High Today:
-            @Model.Forecast[0].GetPreferredHighTemp()
+            <span class="f">@Model.Forecast[0].High°F</span> 
+            <span hidden class="c">@Model.Forecast[0].CelsiusHigh°C</span>
         </h4>
     </div>
     <div class="col-sm-2">
         <h4>
             Tomorrow's High:
-            @Model.Forecast[1].GetPreferredLowTemp()
+            <span class="f">@Model.Forecast[1].High°F</span> 
+            <span hidden class="c">@Model.Forecast[1].CelsiusHigh°C</span>
         </h4>
     </div>
     @for (int i = 3; i <= Model.Forecast.Count; i++)
@@ -195,7 +184,9 @@
         <div class="col-sm-2">
             <h4>
                 High:
-                @Model.Forecast[i - 1].GetPreferredHighTemp()
+                <span class="f">@Model.Forecast[i - 1].High°F</span>
+                <span hidden class="c">@Model.Forecast[i - 1].CelsiusLow°C</span>
+
             </h4>
         </div>
     }
@@ -205,14 +196,16 @@
     <div class="col-sm-2">
         <h4>
             Low Today:
-            @Model.Forecast[0].GetPreferredLowTemp()
+            <span class="f">@Model.Forecast[0].Low°F</span> 
+            <span hidden class="c">@Model.Forecast[0].CelsiusLow°C</span> 
 
         </h4>
     </div>
     <div class="col-sm-2">
         <h4>
             Tomorrow's Low:
-            @Model.Forecast[1].GetPreferredLowTemp()
+            <span class="f">@Model.Forecast[1].Low°F</span>
+            <span hidden class="c">@Model.Forecast[1].CelsiusLow°C</span>
         </h4>
     </div>
     @for (int i = 3; i <= Model.Forecast.Count; i++)
@@ -220,7 +213,8 @@
         <div class="col-sm-2">
             <h4>
                 Low:
-                @Model.Forecast[i - 1].GetPreferredLowTemp()
+                <span class="f">@Model.Forecast[i - 1].Low°F</span>
+                <span hidden class="c">@Model.Forecast[i - 1].CelsiusLow°C</span>
             </h4>
         </div>
     }
